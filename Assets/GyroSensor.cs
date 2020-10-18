@@ -37,10 +37,8 @@ public class GyroSensor : MonoBehaviour
             
             // GyroRotation();
             //
-            // Shake();
+            Shake();
         }
-        
-
     }
 
     public void BTN_CalibrateGyroGravity()
@@ -53,6 +51,11 @@ public class GyroSensor : MonoBehaviour
         roomT.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
     
+    static Quaternion GyroToUnity(Quaternion q)
+    {
+        return new Quaternion(q.x, q.y, -q.z, -q.w);
+    }
+    
     bool EnableGyro()
     {
         if (SystemInfo.supportsGyroscope)
@@ -63,6 +66,14 @@ public class GyroSensor : MonoBehaviour
             return true;
         }
         return false;
+    }
+    
+
+    
+    void Shake()
+    {
+        var shakeAmount = gyro.userAcceleration.magnitude;
+        Debug.Log($"shakeAmount: {shakeAmount}");
     }
     
     void GyroModifyCamera()
@@ -124,11 +135,7 @@ public class GyroSensor : MonoBehaviour
         // roomT.rotation = sliderRotatedQuaternion;
     }
 
-    static Quaternion GyroToUnity(Quaternion q)
-    {
-        return new Quaternion(q.x, q.y, -q.z, -q.w);
-    }
-    
+
 
     
     // void GyroRotation()
@@ -167,12 +174,7 @@ public class GyroSensor : MonoBehaviour
     //
     // }
     //
-    // void Shake()
-    // {
-    //     var shakeAmount = gyro.userAcceleration.magnitude;
-    //     Debug.Log($"shakeAmount: {shakeAmount}");
-    // }
-    
+
     
     
 }
