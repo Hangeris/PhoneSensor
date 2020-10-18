@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlinkEffect : MonoBehaviour
 {
     public AnimationCurve alphaCurve;
-    public Sprite sprite;
+    public Image image;
 
     void Update()
     {

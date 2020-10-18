@@ -73,7 +73,8 @@ public class GyroSensor : MonoBehaviour
     void Shake()
     {
         var shakeAmount = gyro.userAcceleration.magnitude;
-        Debug.Log($"shakeAmount: {shakeAmount}");
+        if (shakeAmount > 2)
+            Debug.Log($"shakeAmount: {shakeAmount}");
     }
     
     void GyroModifyCamera()
