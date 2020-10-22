@@ -8,15 +8,31 @@ public class BlinkEffect : MonoBehaviour
 {
     public AnimationCurve alphaCurve;
     public Image image;
-
-    void Update()
+    public void Blink(Color color)
     {
-        Blink();
+        StopAllCoroutines();
+        StartCoroutine(BlinkRoutine(color));
     }
 
-    public void Blink()
+    IEnumerator BlinkRoutine(Color color)
     {
-        Debug.Log(alphaCurve.length);
+        float time = 0;
+        var startColor = color;
+        startColor.a = 0;
+        image.color = startColor;
+        
+        while (true)
+        {
+            yield return null;
+            time += Time.deltaTime;
+            startColor.a = alphaCurve.Evaluate(time);
+            image.color = startColor;
+
+            if (alphaCurve.Evaluate(time) <= 0)
+                yield break;
+        }
+        
+        
     }
     
 }

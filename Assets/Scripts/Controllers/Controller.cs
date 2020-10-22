@@ -9,6 +9,8 @@ public class Controller : MonoBehaviour
     [SerializeField] GyroSensor gyroSensor;
     [SerializeField] VibrationSensor vibrationSensor;
     [SerializeField] UIController uiController;
+    [SerializeField] BlinkEffect blinkEffect;
+    
 
     List<Ball> balls = new List<Ball>();
 
@@ -19,7 +21,6 @@ public class Controller : MonoBehaviour
         {
             balls[i].meshRenderer.enabled = areVisible;
         }
-        
     }
 
     public void Register(Ball ball)
@@ -27,13 +28,13 @@ public class Controller : MonoBehaviour
         balls.Add(ball);
     }
     
-    public void BallHit()
+    public void BallCollisionEnter(Color ballColor)
     {
         if (uiController.vibrationToggle.isOn)
             vibrationSensor.Vibrate();
         
-        // if (uiController.vibrationToggle.isOn)
-        //     vibrationSensor.Vibrate();
+        if (uiController.blinkEffectToggle)
+            blinkEffect.Blink(ballColor);
         //
         // if (uiController.vibrationToggle.isOn)
         //     vibrationSensor.Vibrate();
