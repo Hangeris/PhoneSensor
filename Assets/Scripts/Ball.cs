@@ -29,9 +29,12 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
+        // if (other.transform.CompareTag("Ball"))
+        //     return;
+        
         var impulse = other.impulse;
 
-        if (impulse.magnitude > 1)
+        if (impulse.magnitude > 0.05f)
         {
             Debug.Log($"Impulse magnitude: {impulse.magnitude}");
             var ray = new Ray(transform.position, transform.position + impulse);
@@ -51,7 +54,7 @@ public class Ball : MonoBehaviour
         startPos = transform.position;
         
         // Generate random color
-        randomColor = Random.ColorHSV(0, 1, 1, 1);
+        randomColor = Random.ColorHSV(0, 1, 1, 1, 1, 1);
         meshRenderer.material.color = randomColor;
         
         // Random audio clip
