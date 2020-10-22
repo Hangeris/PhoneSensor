@@ -10,12 +10,14 @@ public class UIController : MonoBehaviour
     public Toggle ballVisibilityToggle;
     public Toggle vibrationToggle;
     public Toggle blinkEffectToggle;
+    public Toggle audioEffectToggle;
     
     void Awake()
     {
         ballVisibilityToggle.onValueChanged.AddListener(HandleBallVisibilityToggleChange);
         vibrationToggle.onValueChanged.AddListener(HandleVibrationToggleChange);
         blinkEffectToggle.onValueChanged.AddListener(HandleBlinkEffectToggleChange);
+        audioEffectToggle.onValueChanged.AddListener(HandleAudioToggleChange);
     }
 
     
@@ -35,6 +37,12 @@ public class UIController : MonoBehaviour
     void HandleBlinkEffectToggleChange(bool isOn)
     {
         Debug.Log("Blink Effect toggle changed");
+        
+    }
+    
+    void HandleAudioToggleChange(bool isOn)
+    {
+        Debug.Log("Audio toggle changed");
         
     }
 

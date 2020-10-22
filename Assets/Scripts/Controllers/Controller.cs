@@ -10,7 +10,6 @@ public class Controller : MonoBehaviour
     [SerializeField] VibrationSensor vibrationSensor;
     [SerializeField] UIController uiController;
     [SerializeField] BlinkEffect blinkEffect;
-    
 
     List<Ball> balls = new List<Ball>();
 
@@ -28,16 +27,16 @@ public class Controller : MonoBehaviour
         balls.Add(ball);
     }
     
-    public void BallCollisionEnter(Color ballColor)
+    public void BallCollisionEnter(Color ballColor, AudioClip audioClip, float collisionForce)
     {
         if (uiController.vibrationToggle.isOn)
             vibrationSensor.Vibrate();
         
         if (uiController.blinkEffectToggle)
             blinkEffect.Blink(ballColor);
-        //
-        // if (uiController.vibrationToggle.isOn)
-        //     vibrationSensor.Vibrate();
+        
+        if (uiController.vibrationToggle.isOn)
+            vibrationSensor.Vibrate();
     }
     
 }
