@@ -47,6 +47,7 @@ public class Ball : MonoBehaviour
     void Init()
     {
     
+        
         // Register the ball
         controller = FindObjectOfType<Controller>();
         controller.Register(this);
