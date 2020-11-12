@@ -19,26 +19,19 @@ public class UIController : MonoBehaviour
         vibrationToggle.onValueChanged.AddListener(HandleVibrationToggleChange);
         blinkEffectToggle.onValueChanged.AddListener(HandleBlinkEffectToggleChange);
         audioEffectToggle.onValueChanged.AddListener(HandleAudioToggleChange);
-
-
-
     }
 
     void Start()
     {
-        ballVisibilityToggle.isOn = false;
-        vibrationToggle.isOn = false;
-        blinkEffectToggle.isOn = false;
-        audioEffectToggle.isOn = false;
-
-        HandleBallVisibilityToggleChange(ballVisibilityToggle.isOn);
-        HandleVibrationToggleChange(vibrationToggle.isOn);
-        HandleBlinkEffectToggleChange(blinkEffectToggle.isOn);
-        HandleAudioToggleChange(audioEffectToggle.isOn);
+        HandleBallVisibilityToggleChange(false);
+        HandleVibrationToggleChange(false);
+        HandleBlinkEffectToggleChange(false);
+        HandleAudioToggleChange(false);
     }
 
     void HandleBallVisibilityToggleChange(bool isOn)
     {
+        ballVisibilityToggle.isOn = isOn;
         controller.ChangeBallVisibility(isOn);
         Debug.Log("Ball Visibility toggle changed");
         
@@ -46,20 +39,35 @@ public class UIController : MonoBehaviour
     
     void HandleVibrationToggleChange(bool isOn)
     {
+        vibrationToggle.isOn = isOn;
         Debug.Log("Vibration toggle changed");
         
     }
     
     void HandleBlinkEffectToggleChange(bool isOn)
     {
+        blinkEffectToggle.isOn = isOn;
         Debug.Log("Blink Effect toggle changed");
         
     }
     
-    void HandleAudioToggleChange(bool isOn)
+    public void HandleAudioToggleChange(bool isOn)
     {
+        audioEffectToggle.isOn = isOn;
         Debug.Log("Audio toggle changed");
         
+    }
+
+    public void GuessPressed(int guess = -1)
+    {
+        if (guess == -1)
+        {
+            Debug.Log("Kas cia");
+            return;
+        }
+
+        controller.Guess(guess);
+
     }
 
 }
