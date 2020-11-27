@@ -17,11 +17,6 @@ public class Ball : MonoBehaviour
     AudioClip randomAudio;
     Color randomColor;
 
-    void Awake()
-    {
-        Init();
-    }
-
     void Update()
     {
         HandleBallOutOfRoom();
@@ -29,9 +24,6 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        // if (other.transform.CompareTag("Ball"))
-        //     return;
-        
         var impulse = other.impulse;
 
         if (impulse.magnitude > 0.05f)
@@ -44,10 +36,8 @@ public class Ball : MonoBehaviour
         }
     }
     
-    void Init()
+    public void Init()
     {
-    
-        
         // Register the ball
         controller = FindObjectOfType<Controller>();
         controller.Register(this);

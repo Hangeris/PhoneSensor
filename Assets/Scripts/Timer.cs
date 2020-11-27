@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
 
         if (IsNextTimeReady())
         {
-            HandleNextHelp();
+            //HandleNextHelp();
         }
         
     }

@@ -14,7 +14,6 @@ public class Controller : MonoBehaviour
     [Header("References")]
     [SerializeField] GyroSensor gyroSensor;
     [SerializeField] VibrationSensor vibrationSensor;
-    [SerializeField] UIController uiController;
     [SerializeField] BlinkEffect blinkEffect;
 
     [Header("Audio")] 
@@ -23,6 +22,18 @@ public class Controller : MonoBehaviour
     List<Ball> balls = new List<Ball>();
     int generatedBallAmount = 0;
 
+    void Start()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+        FindObjectOfType<ObjectSpawner>().Init();
+        
+        ChangeBallVisibility(UIController.AreBallsVisible);
+    }
+    
     public void Guess(int guess)
     {
         var time = FindObjectOfType<Timer>().timer;
@@ -36,7 +47,7 @@ public class Controller : MonoBehaviour
             Debug.Log($"You are incorrect! Your time is: {time:F1}");
         }
 
-        SceneManager.LoadScene(0);
+        FindObjectOfType<GameEndPanel>().Show();
     }
     
     public void Help(int currentHelp)
@@ -69,13 +80,13 @@ public class Controller : MonoBehaviour
 
     public void BallCollisionEnter(Color ballColor, AudioClip audioClip, float collisionForce)
     {
-        if (uiController.vibrationToggle.isOn)
+        if (UIController.IsVibrationActive)
             vibrationSensor.Vibrate();
         
-        if (uiController.blinkEffectToggle.isOn)
+        if (UIController.IsBlinkEffectActive)
             blinkEffect.Blink(ballColor);
 
-        if (uiController.audioEffectToggle.isOn)
+        if (UIController.IsSoundActive)
         {
             var volume = audioVolumeCurve.Evaluate(collisionForce);
             EazySoundManager.PlaySound(audioClip, volume);
