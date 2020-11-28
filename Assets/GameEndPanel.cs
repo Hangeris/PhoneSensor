@@ -45,8 +45,6 @@ public class GameEndPanel : MonoBehaviour
         bool isBlinkEffectActive = UIController.IsBlinkEffectActive;
         bool isSoundActive = UIController.IsSoundActive;
 
-        Debug.Log($"File path: {filePath}");
-        
         if (DoesSaveDataFileExist())
         {
             // Some users already exist
