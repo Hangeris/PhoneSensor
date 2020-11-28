@@ -37,17 +37,20 @@ public class Controller : MonoBehaviour
     public void Guess(int guess)
     {
         var time = FindObjectOfType<Timer>().timer;
-
+        bool isCorrect;
+        
         if (guess == generatedBallAmount)
         {
+            isCorrect = true;
             Debug.Log($"You are correct! Your time is: {time:F1}");
         }
         else
         {
+            isCorrect = false;
             Debug.Log($"You are incorrect! Your time is: {time:F1}");
         }
 
-        FindObjectOfType<GameEndPanel>().Show();
+        FindObjectOfType<GameEndPanel>().Show(time, isCorrect);
     }
     
     public void Help(int currentHelp)

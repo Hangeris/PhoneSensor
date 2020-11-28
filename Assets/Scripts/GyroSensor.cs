@@ -35,14 +35,15 @@ public class GyroSensor : MonoBehaviour
         {
             GyroModifyCamera();
             
-            // GyroRotation();
-            //
             Shake();
         }
     }
 
     public void BTN_CalibrateGyroGravity()
     {
+        if (gyro == null)
+            return;
+        
         calibratedQuaternion = correctionQuaternion * GyroToUnity(gyro.attitude);
     }
     
@@ -92,90 +93,6 @@ public class GyroSensor : MonoBehaviour
         {
             rb.angularVelocity = Vector3.zero;
         }
-        
-
-        
-        //roomT.Rotate(gyroX, gyroY, 0);
-            
-            
-        //roomT.rotation = new Quaternion(0, 0, -gyro.attitude.z, gyro.attitude.w);
-            
-            
-        // Vector3 previousEulerAngles = roomT.eulerAngles;
-        // Vector3 gyroInput = -Input.gyro.rotationRateUnbiased; //Not sure about the minus symbol (untested)
-        //
-        // Vector3 targetEulerAngles = previousEulerAngles + gyroInput * Time.deltaTime * Mathf.Rad2Deg;
-        // targetEulerAngles.z = 0.0f;
-        //
-        // roomT.eulerAngles = targetEulerAngles;
-            
-            
-            
-        // Vector3 gyroEuler = Input.gyro.attitude.eulerAngles;
-        // roomT.eulerAngles = new Vector3(-1.0f * gyroEuler.x, -1.0f * gyroEuler.y, gyroEuler.z);
-        //
-        // Vector3 upVec = roomT.transform.InverseTransformDirection(-1f * Vector3.forward);
-        //
-        // Debug.DrawLine(transform.position, upVec, Color.magenta, 0.5f);
-        
-        
-        
-        // var gyroQuaternion = correctionQuaternion * GyroToUnity(gyro.attitude);
-        // Debug.Log(gyroQuaternion);
-        //
-        //
-        // Debug.DrawRay(transform.position, transform.position + gyroQuaternion.eulerAngles.normalized, Color.blue, 0.5f);
-      
-        
-        
-        // var gyroQuaternion = GyroToUnity(gyro.attitude);
-        // // rotate coordinate system 90 degrees. Correction Quaternion has to come first
-        // var correctedQuaternion = correctionQuaternion * gyroQuaternion;
-        // var sliderRotatedQuaternion = Quaternion.Euler(Vector3.right * slider.value) * correctedQuaternion;
-        // sliderRotatedQuaternion = sliderRotatedQuaternion * calibratedQuaternion;
-        // roomT.rotation = sliderRotatedQuaternion;
     }
-
-
-
-    
-    // void GyroRotation()
-    // {
-    //     
-    //     // var currentGyroCalibratedRot = gyroCalibratedGravity.eulerAngles;
-    //     // var currentGyroRot = gyro.attitude.eulerAngles;
-    //
-    //     var grav = gyro.gravity;
-    //
-    //     Debug.Log($"gyro.gravity: {grav}");
-    //     
-    //     
-    //     //Debug.Log($"currentGyroCalibratedPos: {currentGyroCalibratedRot}");
-    //     var difference = gyroCalibratedGravity - grav;
-    //     Debug.Log($"difference: {difference.magnitude}");
-    //     //roomT.localRotation = gyro.attitude * rot;
-    //
-    //     if (difference.magnitude > 0.5f)
-    //     {
-    //         roomT.Rotate(difference.normalized * Time.deltaTime * roomRotateSpeed);
-    //     }
-    //     
-    //     Ray ray2 = new Ray(transform.position, difference);
-    //     Debug.DrawLine(ray2.origin, ray2.origin + difference, Color.blue, 0.5f);
-    //     
-    //     // Ray ray1 = new Ray(transform.position, att.normalized);
-    //     // Debug.DrawRay(ray1.origin, ray1.direction, Color.black, 0.5f);
-    //     //
-    //     // Ray ray3 = new Ray(transform.position, rotRate.normalized);
-    //     // Debug.DrawRay(ray3.origin, ray3.direction, Color.magenta, 0.5f);
-    //     //
-    //     // Ray ray4 = new Ray(transform.position, rotRateUnbaias.normalized);
-    //     // Debug.DrawRay(ray4.origin, ray4.direction, Color.red, 0.5f);
-    //
-    //
-    // }
-    //
-
-    
     
 }
