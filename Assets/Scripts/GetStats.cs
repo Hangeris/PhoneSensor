@@ -76,8 +76,9 @@ public class GetStats : MonoBehaviour
         if (!gameData.isSoundActive && gameData.isVibrationActive && gameData.isBlinkEffectActive)
             return "Vibration, blink effect";
         
+        
         if (gameData.isSoundActive && gameData.isVibrationActive && gameData.isBlinkEffectActive)
-            return "All regular effects";
+            return "Sound, vibration, blink effect";
 
         return "Unknown type";
 

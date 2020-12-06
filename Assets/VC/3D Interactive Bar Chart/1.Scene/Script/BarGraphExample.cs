@@ -24,7 +24,19 @@ public class BarGraphExample : MonoBehaviour
             return;
         }
         
-        var specificUser = GetSpecificUser(allUsers, 0);
+        
+        
+        //exampleDataSet = new List<BarGraphDataSet>();
+        
+        //exampleDataSet.Add();
+        
+        //if the exampleDataSet list is empty then return.
+
+    }
+
+    public void ShowStatsFromGivenPlayer(AllUsers allUsers, int givenUserId)
+    {
+        var specificUser = GetSpecificUser(allUsers, givenUserId);
 
         Debug.Log("-----------");
         GameData mockedGameData;
@@ -41,29 +53,16 @@ public class BarGraphExample : MonoBehaviour
             barIndex = 1;    // 0 = winrate, 1 = games played
             var playedAmount = GetTotalPlayed(currentGameData);
             exampleDataSet[gameDataTypeIndex].ListOfBars[barIndex].YValue = playedAmount;
-            
-            
-            
-            //barGraphGenerator.AddNewDataSet(0, i, winRate);
-            
-            //Debug.Log($"{currentGameData.areBallsVisible} {currentGameData.isSoundActive} {currentGameData.isVibrationActive} {currentGameData.isBlinkEffectActive}");
-            //
         }
         
-        //exampleDataSet = new List<BarGraphDataSet>();
-        
-        //exampleDataSet.Add();
-        
-        //if the exampleDataSet list is empty then return.
         if (exampleDataSet.Count == 0)
         {
-
             Debug.LogError("ExampleDataSet is Empty!");
             return;
         }
         barGraphGenerator.GeneratBarGraph(exampleDataSet);
     }
-
+    
     GameData GetCurrentGameData(UserData userData, GameData mockedGameData)
     {
         foreach (var gameData in userData.gameDatas)

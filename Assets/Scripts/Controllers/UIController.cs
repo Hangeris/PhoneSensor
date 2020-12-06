@@ -26,10 +26,6 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
-        GameData gameData = new GameData(false, false, false, true);
-        GameData gameData2 = new GameData(false, true, false, false);
-        Debug.Log(gameData.Equals(gameData2));
-        
         HandleBallVisibilityToggleChange(false);
         HandleVibrationToggleChange(false);
         HandleBlinkEffectToggleChange(false);
