@@ -33,5 +33,10 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<Controller>().Init();
         Debug.Log("After controller Init");
     }
+    
+    public IEnumerator EnterStatsRoutine()
+    {
+        yield return SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
+    }
 
 }

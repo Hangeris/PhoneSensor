@@ -26,8 +26,7 @@ public struct UserData
         if (obj == null)
             return false;
 
-        return ((UserData) obj).name == name &&
-               ((UserData) obj).gender == gender;
+        return ((UserData) obj).name == name;
     }
 
     public bool ContainsGameData(GameData givenGameData, out GameData gameData)

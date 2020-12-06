@@ -26,6 +26,10 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
+        GameData gameData = new GameData(false, false, false, true);
+        GameData gameData2 = new GameData(false, true, false, false);
+        Debug.Log(gameData.Equals(gameData2));
+        
         HandleBallVisibilityToggleChange(false);
         HandleVibrationToggleChange(false);
         HandleBlinkEffectToggleChange(false);
@@ -77,6 +81,11 @@ public class UIController : MonoBehaviour
     public void BTN_Play()
     {
         StartCoroutine(FindObjectOfType<GameManager>().EnterPlayRoutine());
+    }
+    
+    public void BTN_Stats()
+    {
+        StartCoroutine(FindObjectOfType<GameManager>().EnterStatsRoutine());
     }
     
     

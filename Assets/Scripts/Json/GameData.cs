@@ -26,6 +26,9 @@ public struct GameData
         if (obj == null)
             return false;
         
+        if (((GameData)obj).areBallsVisible == areBallsVisible && areBallsVisible)
+            return true;
+        
         return ((GameData)obj).areBallsVisible == areBallsVisible &&
                ((GameData)obj).isVibrationActive == isVibrationActive &&
                ((GameData)obj).isBlinkEffectActive == isBlinkEffectActive &&
