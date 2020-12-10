@@ -6,7 +6,6 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using File = UnityEngine.Windows.File;
 
 public class GameEndPanel : MonoBehaviour
 {

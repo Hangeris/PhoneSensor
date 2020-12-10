@@ -44,7 +44,7 @@ public class StatsManager : MonoBehaviour
         var filePath = Application.persistentDataPath + "/savedData.txt";
         Debug.Log($"File path: {filePath}");
 
-        if (!UnityEngine.Windows.File.Exists(filePath))
+        if (!File.Exists(filePath))
         {
             fileFound = false;
             return new AllUsers();
